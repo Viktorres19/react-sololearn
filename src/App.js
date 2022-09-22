@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+import AddPersonForm from "./components/AddPersonForm";
+import PeopleList from "./components/PeopleList";
 
-function App() {
+const App = () => {
+  const [contacts, setContacts] = useState(["James Smith", "Thomas Anderson", "Bruce Wayne"]);
+
+  const addPerson = (name) => {
+    setContacts([...contacts, name]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <AddPersonForm handleSubmit={addPerson} />
+      <PeopleList data={contacts} />
     </div>
   );
 }
