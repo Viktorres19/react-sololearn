@@ -1,0 +1,41 @@
+li {
+    list-style-type: none;
+    padding: 1rem 2rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+li i {
+    font-size: .8em;
+    color: lightseagreen;
+    padding-right: 5px;
+}
+
+li:not(:last-of-type) {
+    border-bottom: 1px solid rgb(226, 232, 240);
+}
+
+.contact-left {
+    flex-grow: 2;
+}
+
+.surname {
+    padding-left: 10px;
+}
+
+.city {
+    border-top: 1px solid rgba(79, 80, 229, .4);
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+.position {
+    padding-left: 20px;
+    margin-left: 30px;
+    border-left: 1px solid rgba(79, 80, 229, .4);
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+}

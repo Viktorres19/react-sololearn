@@ -2,27 +2,60 @@ import React, {useState} from "react";
 import './AddPersonForm.scss'
 
 const AddPersonForm = (props) => {
-  const [ person, setPerson ] = useState('');
+  const [ name, setName ] = useState('');
+  const [ surname, setSurname ] = useState('');
+  const [ position, setPosition ] = useState('');
+  const [ city, setCity ] = useState('');
 
   const handleChange = (e) => {
-    setPerson(e.target.value);
+    setName(e.target.value);
+  }
+
+  const handleSurnameChange = (e) => {
+    setSurname(e.target.value);
+  }
+
+  const handlePositionChange = (e) => {
+    setPosition(e.target.value);
+  }
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(person !== '') {
-      props.handleSubmit(person);
-      setPerson('');
+    if(name !== '' && surname !== '' && position !== '' && city !== '') {
+      props.handleSubmit(name, surname, position, city);
+      setName('');
+      setSurname('');
+      setPosition('');
+      setCity('');
     }
   }
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <input type="text"
-             placeholder="Add new contact"
+             placeholder="Enter name"
              onChange={handleChange}
-             value={person}
+             value={name}
       />
-      <button type="submit">Add</button>
+      <input type="text"
+             placeholder="Enter surname"
+             onChange={handleSurnameChange}
+             value={surname}
+      />
+      <input type="text"
+             placeholder="Enter position"
+             onChange={handlePositionChange}
+             value={position}
+      />
+      <input type="text"
+             placeholder="Enter city"
+             onChange={handleCityChange}
+             value={city}
+      />
+      <button type="submit">Add contact</button>
     </form>
   );
 }

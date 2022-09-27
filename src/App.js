@@ -1,19 +1,48 @@
 import './App.css';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import AddPersonForm from "./components/AddPersonForm";
-import PeopleList from "./components/PeopleList";
+import ContactList from "./components/ContactList";
+import {
+  collection,
+  addDoc,
+  query,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from 'firebase/firestore'
+import {db} from './firebase'
 
 const App = () => {
-  const [contacts, setContacts] = useState(["James Smith", "Thomas Anderson", "Bruce Wayne"]);
+  const [contacts, setContacts] = useState([]);
 
-  const addPerson = (name) => {
-    setContacts([...contacts, name]);
+  useEffect(() => {
+    const q = query(collection(db, 'persons'));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let personsArray = [];
+      querySnapshot.forEach((item) => {
+        personsArray.push({ ...item.data(), id: item.id });
+      });
+      setContacts(personsArray);
+    });
+    return () => unsub();
+  }, [])
+
+  const addPerson = async (name, surname, position, city) => {
+    await addDoc(collection(db, 'persons'), {
+      name: name.trim(),
+      surname: surname.trim(),
+      position: position.trim(),
+      city: city.trim()
+    })
   }
 
   return (
     <div className="app">
-      <AddPersonForm handleSubmit={addPerson} />
-      <PeopleList data={contacts} />
+      <div className="container">
+        <AddPersonForm handleSubmit={addPerson} />
+        <ContactList contacts={contacts} />
+      </div>
     </div>
   );
 }
