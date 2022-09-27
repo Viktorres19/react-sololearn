@@ -12,6 +12,8 @@ import {
   deleteDoc,
 } from 'firebase/firestore'
 import {db} from './firebase'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -39,10 +41,14 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="container">
-        <AddPersonForm handleSubmit={addPerson} />
-        <ContactList contacts={contacts} />
-      </div>
+      <Header contacts={contacts} />
+      <main className="main">
+        <div className="container">
+          <AddPersonForm handleSubmit={addPerson} />
+          <ContactList contacts={contacts} />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
