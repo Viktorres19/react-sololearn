@@ -35,6 +35,7 @@ const AddPersonForm = (props) => {
   }
   return (
     <form className="add-form" onSubmit={handleSubmit}>
+      <h2 className="h2">Please add a new contact!</h2>
       <input type="text"
              placeholder="Enter name"
              onChange={handleChange}

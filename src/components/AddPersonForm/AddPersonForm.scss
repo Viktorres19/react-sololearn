@@ -4,6 +4,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  .h2 {
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+
   input[type=text] {
     font-size: 20px;
     line-height: 1;
