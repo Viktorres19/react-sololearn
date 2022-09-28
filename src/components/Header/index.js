@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import './Header.css';
+import './Header.scss';
 
 const Header = ({contacts}) => {
   const [contactsSum, setContactsSum] = useState([]);

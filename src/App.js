@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React, {useState, useEffect} from "react";
 import AddPersonForm from "./components/AddPersonForm";
 import ContactList from "./components/ContactList";
@@ -35,8 +35,31 @@ const App = () => {
       name: name.trim(),
       surname: surname.trim(),
       position: position.trim(),
-      city: city.trim()
+      city: city.trim(),
+      status: false,
+      completed: true
     })
+  }
+
+  const deletePerson = async (id) => {
+    await deleteDoc(doc(db, 'persons', id))
+  }
+
+  const toggleStatus = async (contact) => {
+    await updateDoc(doc(db, "persons", contact.id), { status: !contact.status });
+  }
+
+  const saveTask = async (id, newName, newSurname, newCity, newPosition) => {
+    await updateDoc(doc(db, "persons", id), {
+      name: newName,
+      surname: newSurname,
+      city: newCity,
+      position: newPosition
+    });
+  }
+
+  const toggleCompleted = async (contact) => {
+    await updateDoc(doc(db, "persons", contact.id), { completed: !contact.completed });
   }
 
   return (
@@ -45,7 +68,13 @@ const App = () => {
       <main className="main">
         <div className="container">
           <AddPersonForm handleSubmit={addPerson} />
-          <ContactList contacts={contacts} />
+          <ContactList
+            contacts={contacts}
+            deletePerson={deletePerson}
+            toggleStatus={toggleStatus}
+            saveTask={saveTask}
+            toggleCompleted={toggleCompleted}
+          />
         </div>
       </main>
       <Footer />

@@ -1,0 +1,120 @@
+.contact {
+  list-style-type: none;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  i {
+    font-size: .8em;
+    color: lightseagreen;
+    padding-right: 5px;
+  }
+  &:not(:last-of-type) {
+    border-bottom: 1px solid rgb(226, 232, 240);
+  }
+  input {
+    border: none;
+    font-weight: bold;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.contact-left {
+  flex-grow: 2;
+  position: relative;
+  width: 75%;
+  box-sizing: border-box;
+}
+
+.contact-top {
+  display: flex;
+  align-items: center;
+}
+
+.name, .surname {
+  padding-right: 5px;
+  display: flex;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.city {
+  border-top: 1px solid rgba(79, 80, 229, .4);
+  padding-top: 5px;
+  margin-top: 10px;
+  span {
+    padding-right: 5px;
+  }
+}
+
+.position {
+  padding-left: 20px;
+  margin-left: 30px;
+  border-left: 1px solid rgba(79, 80, 229, .4);
+  display: flex;
+  align-items: center;
+  width: 25%;
+  box-sizing: border-box;
+  span {
+    padding-right: 5px;
+  }
+}
+
+.delete-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.delete-button:before,
+.delete-button:after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: '';
+  height: 31px;
+  width: 2px;
+  background-color: darkred;
+}
+
+.delete-button:before {
+  transform: rotate(45deg);
+}
+.delete-button:after {
+  transform: rotate(-45deg);
+}
+
+.contact-status {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: .8em;
+  color: darkgrey;
+}
+
+.contact-status span {
+  color: mediumvioletred;
+}
+
+.contact-status.active span {
+  color: limegreen;
+}
+
+.save-task {
+  color: limegreen;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+}

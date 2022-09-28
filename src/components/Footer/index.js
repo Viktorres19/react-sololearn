@@ -1,13 +1,13 @@
 import React from "react";
 
-import './Footer.css';
+import './Footer.scss';
 
 const Footer = () => {
 
   return (
     <footer className="footer">
       <div className="container">
-        <h3 className="h3">Here is a footer</h3>
+        <h4 className="h4">To change status of contact just doubleclick each contact</h4>
       </div>
     </footer>
   )
