@@ -19,6 +19,13 @@
     margin: 0 0 10px;
     box-sizing: border-box;
     width: calc(1/2*100% - (1 - 1/2)*10px);
+    @media (max-width:650px) {
+      font-size: 16px;
+      padding: 5px;
+    }
+    @media (max-width:480px) {
+      width: 100%;
+    }
   }
 
   input[type=text]:focus {
@@ -48,5 +55,9 @@
     padding: 10px;
     border-radius: 10px;
     overflow: visible;
+    @media (max-width:650px) {
+      font-size: 16px;
+      padding: 5px;
+    }
   }
 }
